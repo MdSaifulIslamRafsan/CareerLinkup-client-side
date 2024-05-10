@@ -1,10 +1,84 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import register from "../assets/register.json";
+import registerImg from "../assets/register.json";
+import useAuth from "../Hook/useAuth";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
+import auth from "../Firebase/firebase.config";
 const Register = () => {
   const [isPassword, setIsPassword] = useState(true);
+
+    const {createAccount} = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    
+        const {
+          register,
+          handleSubmit,
+          reset
+        } = useForm();
+
+        const onSubmit = (data) => {
+            reset();
+            const {name , photo , email , password} = data;
+            
+            if (!/^[a-zA-Z\-\'\s]+$/.test(name)){
+                return Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Please enter a valid name containing only letters, spaces, hyphens, and apostrophes",
+                });
+              }
+              if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)){
+                return Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Invalid email format. Please use the format: example@example.com",
+                });
+              }
+              if (!/^https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^/?]+)+\.(?:jpg|jpeg|png|gif)$/.test(photo)){
+                return Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Invalid URL format. Please ensure the URL starts with 'http://' or 'https://' and ends with a supported image file extension (.jpg, .jpeg, .png, .gif).",
+                });
+              }
+              if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+                return Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text:  "Password must be at least 6 characters long and contain at least one uppercase letter and one lowercase letter.",
+                });
+              }
+              createAccount(email , password)
+              .then(() => {
+                navigate(location?.state ? location?.state : '/' )
+                updateProfile(auth.currentUser, {
+                  displayName: name,
+                  photoURL: photo,
+                })
+                Swal.fire({
+                  title: "Good job!",
+                  text:  "Congratulations! Your account has been successfully created.",
+                  icon: "success"
+                });
+              })
+              .catch((error) => {
+                const errorMessage = error.message;
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: errorMessage,
+                });
+              });
+             
+            
+        }
+
+
   return (
     <div className="h-full">
       {/* Container */}
@@ -17,13 +91,13 @@ const Register = () => {
               className="h-auto bg-cover rounded-lg"
               
             />
-             <Lottie className="lg:w-1/2" animationData={register} loop={true} />
+             <Lottie className="lg:w-1/2" animationData={registerImg} loop={true} />
             {/* Col */}
             <div className="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg ">
               <h3 className="py-4 text-2xl text-center text-gray-800 dark:text-white">
                 Create an Account!
               </h3>
-              <form className="px-3 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
+              <form  onSubmit={handleSubmit(onSubmit)} className="px-3 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
                 <div className="mb-4">
                   <label
                     className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
@@ -33,6 +107,8 @@ const Register = () => {
                   </label>
                   <input
                     className="w-full px-3 py-3 mb-3 text-sm leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    {...register("name")}
+                    name="name"
                     id="name"
                     type="text"
                     placeholder="Name"
@@ -48,6 +124,8 @@ const Register = () => {
                   <input
                     className="w-full px-3 py-3 mb-3 text-sm leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="photo"
+                    {...register("photo")}
+                    name="photo"
                     type="text"
                     placeholder="Photo Url"
                   />
@@ -63,6 +141,8 @@ const Register = () => {
                     className="w-full px-3 py-3 mb-3 text-sm leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                     id="email"
                     type="email"
+                    {...register("email")}
+                    name="email"
                     placeholder="Email"
                   />
                 </div>
@@ -77,6 +157,8 @@ const Register = () => {
                     <input
                       className="w-full px-3 py-3 text-sm leading-tight  border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="password"
+                      {...register("password")}
+                      name="password"
                       type={isPassword ?  "password" : 'text'}
                       placeholder="password"
                     />
@@ -92,7 +174,7 @@ const Register = () => {
                 <div className="mb-6 text-center">
                   <button
                     className="w-full px-4 py-4 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none text-sm md:text-xl focus:shadow-outline"
-                    type="button"
+                    type="submit"
                   >
                     Register Account
                   </button>

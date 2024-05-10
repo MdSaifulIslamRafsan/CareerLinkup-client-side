@@ -1,14 +1,64 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Lottie from "lottie-react";
 import login from "../assets/login.json";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../Hook/useAuth";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 const Login = () => {
-    const {handleGoogleLogin} = useAuth();
+    const {handleGoogleLogin , loginAccount} = useAuth();
     
   const [isPassword, setIsPassword] = useState(true);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset
+  } = useForm();
+
+  const onSubmit = (data) => {
+    reset();
+    const {email , password} = data;
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)){
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Invalid email format. Please use the format: example@example.com",
+        });
+      }
+      if(!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text:  "Password must be at least 6 characters long and contain at least one uppercase letter and one lowercase letter.",
+        });
+      }
+    loginAccount(email , password)
+    .then(() => {
+        navigate(location?.state ? location?.state : '/' );
+        Swal.fire({
+            title: "Good job!",
+            text:  "You've successfully logged in. Let's get started!",
+            icon: "success"
+          });
+        // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
+      });
+
+}
+
   return (
     <>
       <div className=" lg:flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
@@ -25,7 +75,7 @@ const Login = () => {
           <p className="text-xl pb-3 text-gray-600 text-center">
             Welcome back!
           </p>
-          <button onClick={()=>handleGoogleLogin()} className="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+          <button onClick={()=>handleGoogleLogin(navigate , location)} className="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
             <div className="bg-white p-2 rounded-full">
               <svg className="w-4" viewBox="0 0 533.5 544.3">
                 <path
@@ -55,7 +105,7 @@ const Login = () => {
             </p>
             <span className="border-b w-1/5 lg:w-1/4" />
           </div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Email Address
@@ -63,6 +113,8 @@ const Login = () => {
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
                 type="email"
+                {...register("email")}
+                name="email"
                 placeholder="Email Address"
               />
             </div>
@@ -80,6 +132,8 @@ const Login = () => {
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
                 type={isPassword ?  "password" : 'text'}
                 placeholder="password"
+                {...register("password")}
+                name="password"
               />
               <span className="absolute text-xl cursor-pointer right-4 top-1/2 -translate-y-1/2" onClick={() => setIsPassword(!isPassword)}>
               {isPassword ? <FaEye /> :  <FaEyeSlash />}

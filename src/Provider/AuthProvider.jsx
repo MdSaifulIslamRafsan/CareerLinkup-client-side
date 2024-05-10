@@ -11,10 +11,11 @@ const AuthProvider = ({children}) => {
   
 
       const googleProvider = new GoogleAuthProvider();
-      const handleGoogleLogin = () => {
+      const handleGoogleLogin = (navigate , location) => {
         setLoader(true);
         return signInWithPopup(auth, googleProvider)
         .then(() => {
+            navigate(location?.state ? location?.state : '/' )
             Swal.fire({
               title: "Good job!",
               text: "You have successfully logged into Google.",
@@ -31,7 +32,14 @@ const AuthProvider = ({children}) => {
           });
       };
     
-   
+      const createAccount = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+      };
+    
+      const loginAccount = (email, password) => {
+        setLoader(true);
+        return signInWithEmailAndPassword(auth, email, password);
+      };
      
 
 
@@ -64,7 +72,7 @@ const AuthProvider = ({children}) => {
           });
       };
 
-    const userInfo = {user , loader , handleGoogleLogin , handleLogout};
+    const userInfo = {user , loader , handleGoogleLogin , handleLogout , loginAccount , createAccount};
     return (
         <AuthContext.Provider value={userInfo}>
             {children}
