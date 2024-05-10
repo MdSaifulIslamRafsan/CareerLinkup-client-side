@@ -15,7 +15,7 @@ const Root = () => {
       </main>
 
       {/* footer */}
-      <footer>
+      <footer className="shadow-2xl pt-8 bg-base-300">
         <Footer></Footer>
       </footer>
     </>

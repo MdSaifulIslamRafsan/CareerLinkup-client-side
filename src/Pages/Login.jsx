@@ -75,11 +75,11 @@ const Login = () => {
               <div className="relative">
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
-                type={isPassword ? 'text' : "password" }
+                type={isPassword ?  "password" : 'text'}
                 placeholder="password"
               />
               <span className="absolute text-xl cursor-pointer right-4 top-1/2 -translate-y-1/2" onClick={() => setIsPassword(!isPassword)}>
-                {isPassword ? <FaEyeSlash/> :  <FaEye />}
+              {isPassword ? <FaEye /> :  <FaEyeSlash />}
               </span>
               </div>
             </div>
