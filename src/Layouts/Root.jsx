@@ -6,9 +6,11 @@ const Root = () => {
     return (
         <>
             {/* navbar */}
-            <Navbar></Navbar>
+           <nav className="max-w-[1440px] w-[95%] lg:w-11/12 mx-auto">
+                 <Navbar></Navbar>
+           </nav>
            
-            <main>
+            <main className="max-w-[1440px] w-[95%] lg:w-11/12 mx-auto">
                 <Outlet></Outlet>
             </main>
 
