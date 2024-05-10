@@ -6,11 +6,11 @@ const Root = () => {
   return (
     <>
       {/* navbar */}
-      <nav className="shadow-xl">
+      <nav className="shadow-xl fixed bg-base-300 top-0 z-50 w-full">
         <Navbar></Navbar>
       </nav>
 
-      <main className="max-w-[1440px] h-[calc(100vh-380px)] w-[95%] lg:w-11/12 mx-auto">
+      <main className="max-w-[1440px] mt-20  w-[95%] lg:w-11/12 mx-auto">
         <Outlet></Outlet>
       </main>
 

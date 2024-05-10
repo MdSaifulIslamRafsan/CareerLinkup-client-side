@@ -4,14 +4,13 @@ import logo from "../../assets/logo.png"
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="max-w-[1440px] h-[calc(100vh-450px)] w-[95%] lg:w-11/12 mx-auto">
+    <div className="max-w-[1440px] w-[95%] lg:w-11/12 mx-auto">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           
             <h3 className="flex gap-2">
               <img  src={logo} alt="" />
               <span className="text-base md:text-lg bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient bg-300% font-bold">
-                {" "}
                 CareerLinkup
               </span>
             </h3>
