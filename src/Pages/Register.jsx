@@ -9,7 +9,7 @@ const Register = () => {
     <div className="h-full">
       {/* Container */}
       <div className="mx-auto">
-        <div className="flex justify-center py-12">
+        <div className="flex justify-center ">
           {/* Row */}
           <div className="w-full  lg:flex">
             {/* Col */}

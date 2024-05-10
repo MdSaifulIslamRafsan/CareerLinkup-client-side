@@ -7,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
   const [isPassword, setIsPassword] = useState(true);
   return (
-    <div className="py-16">
+    <>
       <div className=" lg:flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
         <div className="lg:w-1/2 bg-cover">
           <Lottie animationData={login} loop={true} />
@@ -98,7 +98,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
