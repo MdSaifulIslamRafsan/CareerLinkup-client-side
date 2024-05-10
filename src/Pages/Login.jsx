@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Lottie from "lottie-react";
 import login from "../assets/login.json";
-import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAuth from "../Hook/useAuth";
+import { useState } from "react";
 const Login = () => {
+    const {handleGoogleLogin} = useAuth();
+    
   const [isPassword, setIsPassword] = useState(true);
   return (
     <>
@@ -22,7 +25,7 @@ const Login = () => {
           <p className="text-xl pb-3 text-gray-600 text-center">
             Welcome back!
           </p>
-          <button className="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+          <button onClick={()=>handleGoogleLogin()} className="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
             <div className="bg-white p-2 rounded-full">
               <svg className="w-4" viewBox="0 0 533.5 544.3">
                 <path
@@ -84,7 +87,7 @@ const Login = () => {
               </div>
             </div>
             <div className="mt-8">
-              <button className="rounded-lg border-2 border-sky-500 w-full py-3 text-xl text-sky-500 duration-200 hover:bg-sky-500 hover:text-white">
+              <button className="rounded-lg border-2 border-blue-500 w-full py-3 text-xl text-blue-500 duration-200 hover:bg-blue-500 hover:text-white">
                 Login
               </button>
             </div>

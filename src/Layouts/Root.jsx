@@ -10,7 +10,7 @@ const Root = () => {
         <Navbar></Navbar>
       </nav>
 
-      <main className="max-w-[1440px] mt-20  w-[95%] lg:w-11/12 mx-auto">
+      <main className="max-w-[1440px] mt-20 py-10 w-[95%] lg:w-11/12 mx-auto">
         <Outlet></Outlet>
       </main>
 

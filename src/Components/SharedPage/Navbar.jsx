@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png"
+import useAuth from "../../Hook/useAuth";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
+  const {user , handleLogout} = useAuth();
+
   const navLinks = (
     <>
       <li>
@@ -69,7 +73,24 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-      <Link to="/login" className="text-xl w-24 h-10 flex justify-center items-center rounded-md bg-green-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"><span className="absolute bg-green-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span><span className="absolute bg-green-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>Login</Link>
+        {
+          user &&  <div className="avatar">
+          <div  className="w-10 cursor-pointer rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img id="clickable" src={user?.photoURL} />
+            <Tooltip anchorSelect="#clickable" clickable place="bottom">
+            <p>{user?.email}</p>
+            <button onClick={handleLogout}
+            className="rounded mt-4 px-5 py-2 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+          >
+            <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+            <span className="relative">Logout</span>
+          </button>
+          </Tooltip>
+          </div>
+         
+        </div>
+        }
+      {!user && <Link to="/login" className="text-xl w-24 h-10 flex justify-center items-center rounded-md bg-green-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"><span className="absolute bg-green-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span><span className="absolute bg-green-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>Login</Link>}
 
 
 
