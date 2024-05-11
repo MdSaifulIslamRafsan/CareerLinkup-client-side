@@ -1,12 +1,11 @@
 import Lottie from "lottie-react";
-import { useRef } from "react";
 import spinner from "../assets/spinner.json"
 import { Navigate, useLocation } from "react-router-dom";
+import useAuth from "../Hook/useAuth";
 
 const PrivateRoute = ({children}) => {
-    const {user , loader} = useRef();
-    const location = useLocation();
-    
+  const location = useLocation();
+    const {user , loader} = useAuth();
     if(loader){
         return  <div className="grid place-content-center h-screen">
         <Lottie className="h-40 w-40" animationData={spinner} loop={true} />
