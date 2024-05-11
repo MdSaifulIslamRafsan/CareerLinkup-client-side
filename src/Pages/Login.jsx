@@ -141,7 +141,7 @@ const Login = () => {
               </div>
             </div>
             <div className="mt-8">
-              <button className="rounded-lg border-2 border-blue-500 w-full py-3 text-xl text-blue-500 duration-200 hover:bg-blue-500 hover:text-white">
+              <button className="rounded-lg border-2 border-blue-500 w-full py-3 text-sm md:text-xl text-blue-500 duration-200 hover:bg-blue-500 hover:text-white">
                 Login
               </button>
             </div>
