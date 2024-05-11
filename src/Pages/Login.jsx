@@ -61,7 +61,7 @@ const Login = () => {
 
   return (
     <>
-      <div className=" lg:flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto">
+      <div className=" lg:flex bg-base-200 rounded-lg shadow-lg overflow-hidden mx-auto">
         <div className="lg:w-1/2 bg-cover">
           <Lottie animationData={login} loop={true} />
         </div>
@@ -72,10 +72,10 @@ const Login = () => {
               CareerLinkup
             </span>
           </h3>
-          <p className="text-xl pb-3 text-gray-600 text-center">
+          <p className="text-xl pb-3  text-center">
             Welcome back!
           </p>
-          <button onClick={()=>handleGoogleLogin(navigate , location)} className="w-full font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+          <button onClick={()=>handleGoogleLogin(navigate , location)} className="w-full py-3 flex items-center justify-center rounded-lg border-2 border-blue-500  text-sm md:text-xl text-blue-500 duration-200 hover:bg-blue-500 hover:text-white">
             <div className="bg-white p-2 rounded-full">
               <svg className="w-4" viewBox="0 0 533.5 544.3">
                 <path
@@ -99,19 +99,19 @@ const Login = () => {
             <span className="ml-4">Sign Up with Google</span>
           </button>
           <div className="mt-4 flex items-center justify-between">
-            <span className="border-b w-1/5 lg:w-1/4" />
-            <p className="text-xs text-center text-gray-500 uppercase">
+            <span className="border-b border-neutral w-1/5 lg:w-1/4" />
+            <p className="text-xs text-center  uppercase">
               or login with email
             </p>
-            <span className="border-b w-1/5 lg:w-1/4" />
+            <span className="border-b border-neutral w-1/5 lg:w-1/4" />
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Email Address
               </label>
               <input
-                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
+                className="bg-gray-200  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
                 type="email"
                 {...register("email")}
                 name="email"
@@ -120,10 +120,10 @@ const Login = () => {
             </div>
             <div className="mt-4">
               <div className="flex  justify-between">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="block  text-sm font-bold mb-2">
                   Password
                 </label>
-                <a href="#" className="text-xs text-gray-500">
+                <a href="#" className="text-xs ">
                   Forget Password?
                 </a>
               </div>
@@ -147,11 +147,11 @@ const Login = () => {
             </div>
           </form>
           <div className="mt-4 flex items-center justify-between">
-            <span className="border-b w-1/5 md:w-1/4" />
-            <Link to="/register" className="text-xs text-gray-500 uppercase">
+            <span className="border-b border-neutral w-1/5 md:w-1/4" />
+            <Link to="/register" className="text-xs  uppercase">
               or sign up
             </Link>
-            <span className="border-b w-1/5 md:w-1/4" />
+            <span className="border-b border-neutral w-1/5 md:w-1/4" />
           </div>
         </div>
       </div>

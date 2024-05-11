@@ -15,20 +15,20 @@ const Footer = () => {
               </span>
             </h3>
           <div className="mt-6 lg:max-w-sm">
-            <p className="text-sm text-gray-800">
+            <p className="text-sm">
             Empowering your career journey, CareerLinkup is your ultimate destination for connecting with opportunities that align with your aspirations. 
             </p>
-            <p className="mt-4 text-sm text-gray-800">
+            <p className="mt-4 text-sm">
             Dive into a world of possibilities as we bridge the gap between talent and employers, guiding you towards your professional milestones with precision and support.
             </p>
           </div>
         </div>
         <div className="space-y-2 text-sm">
-          <p className="text-base font-bold tracking-wide text-gray-900">
+          <p className="text-base font-bold tracking-wide">
             Contacts
           </p>
           <div className="flex">
-            <p className="mr-1 text-gray-800">Phone:</p>
+            <p className="mr-1">Phone:</p>
             <a
               href="tel:850-123-5021"
               aria-label="Our phone"
@@ -39,7 +39,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <p className="mr-1 text-gray-800">Email:</p>
+            <p className="mr-1">Email:</p>
             <a
               href="mailto:careerlinkup08@gmail.com"
               aria-label="Our email"
@@ -50,7 +50,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <p className="mr-1 text-gray-800">Address:</p>
+            <p className="mr-1">Address:</p>
             <a
               href="https://www.google.com/maps"
               target="_blank"
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <span className="text-base font-bold tracking-wide text-gray-900">
+          <span className="text-base font-bold tracking-wide ">
             Social
           </span>
           <div className="flex gap-2 my-4">
@@ -79,7 +79,7 @@ const Footer = () => {
             <Link to="/" className="inline-flex items-center justify-center h-8 w-8 border border-gray-400 rounded-full mr-1 hover:text-red-400 hover:border-red-400">
             <FaInstagram className="w-4 h-4 fill-current" />
             </Link>
-            <Link to="/" className="inline-flex items-center justify-center h-8 w-8 border border-gray-400 rounded-full mr-1 hover:text-gray-900 hover:border-gray-900">
+            <Link to="/" className="inline-flex items-center justify-center h-8 w-8 border border-gray-400 rounded-full mr-1 hover: hover:border-gray-900">
             <FaGithub className="w-4 h-4 fill-current" />
             </Link>
             <Link to="/" className="inline-flex items-center justify-center h-8 w-8 border border-gray-400 rounded-full hover:text-red-600 hover:border-red-600">
@@ -105,14 +105,14 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm">
           © Copyright 2024 CareerLinkup. All rights reserved.
         </p>
         <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
           <li>
             <a
               href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+              className="text-sm  transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               F.A.Q
             </a>
@@ -120,7 +120,7 @@ const Footer = () => {
           <li>
             <a
               href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+              className="text-sm  transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Privacy Policy
             </a>
@@ -128,7 +128,7 @@ const Footer = () => {
           <li>
             <a
               href="/"
-              className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+              className="text-sm  transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Terms &amp; Conditions
             </a>

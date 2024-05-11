@@ -155,7 +155,7 @@ const Register = () => {
                   </label>
                   <div className="relative">
                     <input
-                      className="w-full px-3 py-3 text-sm leading-tight  border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      className="w-full px-3 py-3 mb-3 text-sm leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                       id="password"
                       {...register("password")}
                       name="password"

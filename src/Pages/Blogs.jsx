@@ -1,7 +1,7 @@
 const Blogs = () => {
   return (
-    <section id="faq" className="container relative mx-auto py-12 px-2">
-      <h3 className="mb-14 text-teal-900 text-center text-3xl font-semibold underline decoration-teal-200/80 lg:text-left xl:text-4xl">
+    <section id="faq" className="relative mx-auto px-2">
+      <h3 className="mb-14  text-center text-3xl font-semibold underline decoration-teal-200/80 lg:text-left xl:text-4xl">
         Blogs
       </h3>
       <div className="my-6">
@@ -11,7 +11,7 @@ const Blogs = () => {
             where should we store them on the client side?
           </h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/30 bg-teal-100/50 px-4 py-4 text-teal-800">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
           <div>
             <h5>
               <span className="font-bold">Access Token:</span> An access token
@@ -82,7 +82,7 @@ const Blogs = () => {
             What is express js? What is Nest JS?
           </h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/30 bg-teal-100/50 px-4 py-4 text-teal-800">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
           <div>
           <h5>
           <span className="font-bold">Express Js: </span>
@@ -118,7 +118,7 @@ const Blogs = () => {
         <div className="rounded-t-2xl bg-teal-600/80 w-full cursor-pointer select-none border-2 border-teal-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-teal-600/80 hover:text-white">
           <h4 className="text-lg font-medium">How long does shipping take?</h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/30 bg-teal-100/50 px-4 py-4 text-teal-800">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
           <h5>
             Shipping times may vary depending on your location and the product
             you ordered.
