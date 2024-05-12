@@ -1,12 +1,22 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {useParams } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 const JobDetails = () => {
   const { user } = useAuth();
-  const job = useLoaderData();
+const [job , setJob] = useState([]);
+const params = useParams();
+
+useEffect(() => {
+    getJobData();
+  }, [params]);
+
+  const getJobData = async () => {
+    const {data} = await axios(`${import.meta.env.VITE_API_URL}/job/${params?.id}`);
+    setJob(data);
+  };
   const {
     _id,
     jobBanner,
@@ -53,13 +63,14 @@ const JobDetails = () => {
         `${import.meta.env.VITE_API_URL}/appliedJobs`,
         applyJob
       );
-      const applicantsJobData = await axios.put(
+      const applicantsJobData = await axios.post(
         `${import.meta.env.VITE_API_URL}/job/${_id}`
       );
       if (
         applyJobData?.data?.insertedId &&
         applicantsJobData?.data?.modifiedCount
       ) {
+        getJobData();
         Swal.fire({
           title: "Good job!",
           text: "Application submitted successfully",
