@@ -2,12 +2,54 @@ import Lottie from "lottie-react";
 import AddJob from "../assets/Addjob.json";
 import useAuth from "../Hook/useAuth";
 import DatePicker from "react-datepicker";
-
+import Swal from "sweetalert2";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 const AddAJobs = () => {
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = async(data) => {
+    reset();
+    const { jobBanner, jobTitle, category, maxSalary, minSalary, description } =
+      data;
+
+    const createNewJob = {
+      jobBanner,
+      jobTitle,
+      category,
+      description,
+      salaryRange: `$${minSalary} - $${maxSalary}`,
+      jobUser: {
+        name: user?.displayName,
+        email: user?.email,
+      },
+      applicantsNumber: 0,
+      postingDate: new Date().toLocaleDateString(),
+      deadline:  new Date(startDate).toLocaleDateString()
+    };
+    try{
+        const newJobData = await axios.post(`${import.meta.env.VITE_API_URL}/jobs`, createNewJob)
+        if(newJobData?.data?.insertedId){
+            Swal.fire({
+                title: "Good job!",
+                text: "Your job has been added successfully!",
+                icon: "success",
+              });
+        }
+    }
+    catch(err){
+        return Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: err.message,
+          });
+    }
+  };
   return (
     <section className="grid lg:grid-cols-2 gap-5">
       <div>
@@ -19,7 +61,7 @@ const AddAJobs = () => {
             Add a Job
           </h2>
 
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div className="space-y-2">
                 <p>User Name</p>
@@ -32,33 +74,38 @@ const AddAJobs = () => {
             </div>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
-                <label className="text-gray-700 " htmlFor="job_title">
+                <label className="text-gray-700 " htmlFor="jobTitle">
                   Job Title
                 </label>
                 <input
-                  id="job_title"
-                  name="job_title"
+                  id="jobTitle"
+                  {...register("jobTitle")}
+                  name="jobTitle"
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
                 <label className="text-gray-700 " htmlFor="jobBanner">
-                Job Banner Url
+                  Job Banner Url
                 </label>
                 <input
                   id="jobBanner"
+                  {...register("jobBanner")}
                   name="jobBanner"
                   type="text"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
-              
               <div className="flex flex-col gap-2 ">
                 <label className="text-gray-700"> Application Deadline</label>
 
-                <DatePicker className="border py-2 px-4 w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker
+                  className="border py-2 px-4 w-full"
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                />
               </div>
 
               <div className="flex flex-col gap-2 ">
@@ -66,6 +113,7 @@ const AddAJobs = () => {
                   Category
                 </label>
                 <select
+                  {...register("category")}
                   name="category"
                   id="category"
                   className="border p-2 rounded-md"
@@ -78,10 +126,11 @@ const AddAJobs = () => {
               </div>
               <div>
                 <label className="text-gray-700 " htmlFor="maxSalary">
-                Max salary
+                  Max salary
                 </label>
                 <input
                   id="maxSalary"
+                  {...register("maxSalary")}
                   name="maxSalary"
                   type="number"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -90,10 +139,11 @@ const AddAJobs = () => {
 
               <div>
                 <label className="text-gray-700 " htmlFor="minSalary">
-                  Min Salary 
+                  Min Salary
                 </label>
                 <input
                   id="minSalary"
+                  {...register("minSalary")}
                   name="minSalary"
                   type="number"
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -107,12 +157,13 @@ const AddAJobs = () => {
               </label>
               <textarea
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                {...register("description")}
                 name="description"
                 id="description"
               ></textarea>
             </div>
-            <div className="flex justify-end mt-6">
-              <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <div className="flex justify-center mt-6">
+              <button className="btn px-10 btn-outline btn-primary">
                 Save
               </button>
             </div>
