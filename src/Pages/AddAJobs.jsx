@@ -56,8 +56,8 @@ const AddAJobs = () => {
         <Lottie animationData={AddJob} loop={true} />
       </div>
       <div className=" my-12">
-        <section className=" p-2 md:p-6 mx-auto bg-white rounded-md shadow-md ">
-          <h2 className="text-lg font-semibold text-gray-700 capitalize ">
+        <section className=" p-2 md:p-6 mx-auto bg-base-200 rounded-md shadow-md ">
+          <h2 className="text-lg font-semibold capitalize ">
             Add a Job
           </h2>
 
@@ -74,7 +74,7 @@ const AddAJobs = () => {
             </div>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
               <div>
-                <label className="text-gray-700 " htmlFor="jobTitle">
+                <label  htmlFor="jobTitle">
                   Job Title
                 </label>
                 <input
@@ -82,11 +82,11 @@ const AddAJobs = () => {
                   {...register("jobTitle")}
                   name="jobTitle"
                   type="text"
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2 border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
               <div>
-                <label className="text-gray-700 " htmlFor="jobBanner">
+                <label  htmlFor="jobBanner">
                   Job Banner Url
                 </label>
                 <input
@@ -94,7 +94,7 @@ const AddAJobs = () => {
                   {...register("jobBanner")}
                   name="jobBanner"
                   type="text"
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
@@ -109,7 +109,7 @@ const AddAJobs = () => {
               </div>
 
               <div className="flex flex-col gap-2 ">
-                <label className="text-gray-700 " htmlFor="category">
+                <label  htmlFor="category">
                   Category
                 </label>
                 <select
@@ -125,7 +125,7 @@ const AddAJobs = () => {
                 </select>
               </div>
               <div>
-                <label className="text-gray-700 " htmlFor="maxSalary">
+                <label  htmlFor="maxSalary">
                   Max salary
                 </label>
                 <input
@@ -133,12 +133,12 @@ const AddAJobs = () => {
                   {...register("maxSalary")}
                   name="maxSalary"
                   type="number"
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
 
               <div>
-                <label className="text-gray-700 " htmlFor="minSalary">
+                <label htmlFor="minSalary">
                   Min Salary
                 </label>
                 <input
@@ -146,24 +146,24 @@ const AddAJobs = () => {
                   {...register("minSalary")}
                   name="minSalary"
                   type="number"
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                  className="block w-full px-4 py-2 mt-2 border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2 mt-4">
-              <label className="text-gray-700 " htmlFor="description">
+              <label htmlFor="description">
                 Description
               </label>
               <textarea
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
+                className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 {...register("description")}
                 name="description"
                 id="description"
               ></textarea>
             </div>
             <div className="flex justify-center mt-6">
-              <button className="btn px-10 btn-outline btn-primary">
+              <button className="btn w-1/2 btn-outline btn-primary">
                 Save
               </button>
             </div>

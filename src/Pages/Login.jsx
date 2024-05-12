@@ -113,7 +113,7 @@ const Login = () => {
                 Email Address
               </label>
               <input
-                className="bg-gray-200  focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
+                className="focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
                 type="email"
                 {...register("email")}
                 name="email"
@@ -131,7 +131,7 @@ const Login = () => {
               </div>
               <div className="relative">
               <input
-                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
+                className="focus:outline-none focus:shadow-outline border border-gray-300 rounded py-3 px-4 block w-full appearance-none"
                 type={isPassword ?  "password" : 'text'}
                 placeholder="password"
                 {...register("password")}
