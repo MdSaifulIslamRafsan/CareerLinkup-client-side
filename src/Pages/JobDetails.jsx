@@ -1,14 +1,79 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
-
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
 const JobDetails = () => {
-    const {user} = useAuth();
+  const { user } = useAuth();
   const job = useLoaderData();
-  const { jobBanner, jobTitle, description, salaryRange, applicantsNumber } =
-    job;
-    const [isOpen, setIsOpen] = useState(false);
+  const {
+    _id,
+    jobBanner,
+    jobTitle,
+    description,
+    salaryRange,
+    applicantsNumber,
+    jobUser,
+    deadline,
+  } = job;
+  const [isOpen, setIsOpen] = useState(false);
 
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = async (data) => {
+    reset();
+    const { name, email, resume } = data;
+    const jobOwnerEmail = jobUser?.email;
+
+    if (jobOwnerEmail === email) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You cannot apply for your own job.",
+      });
+    }
+    if (
+      new Date().toLocaleDateString() > new Date(deadline).toLocaleDateString()
+    ) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The deadline for this job has already passed.",
+      });
+    }
+    const applyJob = {
+      name,
+      email,
+      resume,
+      jobOwnerEmail,
+    };
+
+    try {
+      const applyJobData = await axios.post(
+        `${import.meta.env.VITE_API_URL}/appliedJobs`,
+        applyJob
+      );
+      const applicantsJobData = await axios.put(
+        `${import.meta.env.VITE_API_URL}/job/${_id}`
+      );
+      if (
+        applyJobData?.data?.insertedId &&
+        applicantsJobData?.data?.modifiedCount
+      ) {
+        Swal.fire({
+          title: "Good job!",
+          text: "Application submitted successfully",
+          icon: "success",
+        });
+      }
+    } catch (err) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message,
+      });
+    }
+  };
   return (
     <div className="overflow-hidden p-4 rounded-lg shadow-md bg-base-200">
       <img
@@ -53,14 +118,15 @@ const JobDetails = () => {
                       className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white"
                       id="modal-title"
                     >
-                       Apply for Jobs
+                      Apply for Jobs
                     </h3>
                     <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Browse through our latest job openings and apply to kickstart your career today!
+                      Browse through our latest job openings and apply to
+                      kickstart your career today!
                     </p>
-                    <form className="mt-4" action="#">
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
                       <label
-                        htmlFor="emails-list"
+                        htmlFor="name"
                         className="text-sm text-gray-700 dark:text-gray-200"
                       >
                         User Name
@@ -69,13 +135,14 @@ const JobDetails = () => {
                         <input
                           type="text"
                           name="name"
+                          {...register("name")}
                           id="name"
                           defaultValue={user?.displayName}
                           className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                         />
                       </label>
                       <label
-                        htmlFor="emails-list"
+                        htmlFor="email"
                         className="text-sm text-gray-700 dark:text-gray-200"
                       >
                         Email Address
@@ -84,28 +151,29 @@ const JobDetails = () => {
                         <input
                           type="email"
                           name="email"
+                          {...register("email")}
                           id="email"
                           defaultValue={user?.email}
                           className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                         />
                       </label>
                       <label
-                        htmlFor="emails-list"
+                        htmlFor="resume"
                         className="text-sm text-gray-700 dark:text-gray-200"
                       >
                         Resume Link
                       </label>
-                      <label className="block mt-3" htmlFor="email">
+                      <label className="block mt-3" htmlFor="resume">
                         <input
-                          type="email"
-                          name="email"
-                          id="email"
+                          type="resume"
+                          name="resume"
+                          {...register("resume")}
+                          id="resume"
                           placeholder="resume link"
                           className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                         />
                       </label>
-                     
-                     
+
                       <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
                         <button
                           type="button"
@@ -115,7 +183,7 @@ const JobDetails = () => {
                           Cancel
                         </button>
                         <button
-                          type="button"
+                          type="submit"
                           className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         >
                           Submit

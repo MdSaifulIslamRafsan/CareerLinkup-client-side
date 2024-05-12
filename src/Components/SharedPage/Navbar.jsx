@@ -38,18 +38,18 @@ const Navbar = () => {
                 <summary>Jobs</summary>
                 <ul className="p-2 w-40">
                   <li>
-                    <NavLink to={"/All-Jobs"}>All Jobs</NavLink>
+                    <NavLink to={"/all-jobs"}>All Jobs</NavLink>
                   </li>
                   {user && (
                     <>
                       <li>
-                        <NavLink to={"/applied-Jobs"}>Applied Jobs</NavLink>
+                        <NavLink to={"/applied-jobs"}>Applied Jobs</NavLink>
                       </li>
                       <li>
-                        <NavLink to={"/add-A-Job"}>Add A Job</NavLink>
+                        <NavLink to={"/add-a-job"}>Add A Job</NavLink>
                       </li>
                       <li>
-                        <NavLink to={"/my-Jobs"}>My Jobs</NavLink>
+                        <NavLink to={"/my-jobs"}>My Jobs</NavLink>
                       </li>
                     </>
                   )}
@@ -78,18 +78,18 @@ const Navbar = () => {
             <NavLink to={"/all-Jobs"}>All Jobs</NavLink>
           </li>
           {user && (
-            <>
-              <li>
-                <NavLink to={"/applied-Jobs"}>Applied Jobs</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/add-A-Job"}>Add A Job</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/my-Jobs"}>My Jobs</NavLink>
-              </li>
-            </>
-          )}
+                    <>
+                      <li>
+                        <NavLink to={"/applied-jobs"}>Applied Jobs</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"/add-a-job"}>Add A Job</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"/my-jobs"}>My Jobs</NavLink>
+                      </li>
+                    </>
+                  )}
           <li>
             <NavLink to={"/blogs"}>Blogs</NavLink>
           </li>
