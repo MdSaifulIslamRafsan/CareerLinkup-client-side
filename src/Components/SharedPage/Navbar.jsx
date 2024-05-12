@@ -40,15 +40,19 @@ const Navbar = () => {
                   <li>
                     <NavLink to={"/All-Jobs"}>All Jobs</NavLink>
                   </li>
-                  <li>
-                    <NavLink to={"/Applied-Jobs"}>Applied Jobs</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/Add-A-Job"}>Add A Job</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to={"/My-Jobs"}>My Jobs</NavLink>
-                  </li>
+                  {user && (
+                    <>
+                      <li>
+                        <NavLink to={"/applied-Jobs"}>Applied Jobs</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"/add-A-Job"}>Add A Job</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"/my-Jobs"}>My Jobs</NavLink>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </details>
             </li>
@@ -73,15 +77,19 @@ const Navbar = () => {
           <li>
             <NavLink to={"/all-Jobs"}>All Jobs</NavLink>
           </li>
-          <li>
-            <NavLink to={"/applied-Jobs"}>Applied Jobs</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/add-A-Job"}>Add A Job</NavLink>
-          </li>
-          <li>
-            <NavLink to={"/my-Jobs"}>My Jobs</NavLink>
-          </li>
+          {user && (
+            <>
+              <li>
+                <NavLink to={"/applied-Jobs"}>Applied Jobs</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/add-A-Job"}>Add A Job</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/my-Jobs"}>My Jobs</NavLink>
+              </li>
+            </>
+          )}
           <li>
             <NavLink to={"/blogs"}>Blogs</NavLink>
           </li>
