@@ -116,16 +116,53 @@ const Blogs = () => {
       </div>
       <div className="my-6">
         <div className="rounded-t-2xl bg-teal-600/80 w-full cursor-pointer select-none border-2 border-teal-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-teal-600/80 hover:text-white">
-          <h4 className="text-lg font-medium">How long does shipping take?</h4>
+          <h4 className="text-lg font-medium">Explain all jobs page code.</h4>
         </div>
         <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
-          <h5>
-            Shipping times may vary depending on your location and the product
-            you ordered.
-            <br />
-            We strive to process and ship orders within 1-2 business days after
-            payment confirmation.
-          </h5>
+            <div className="space-y-4">
+            <div>
+            <span className="font-bold">Server-side : </span>
+          <ul className="!list-disc ml-10">
+              <li>
+              <span className="font-bold">all-jobs : </span>
+              Retrieves paginated job data based on the provided query parameters such as page number, page size, and search keyword.
+              </li>
+              <li>
+              <span className="font-bold">jobs-count : </span>
+              Retrieves the total count of jobs based on the search keyword.
+              </li>
+            </ul>
+            </div>
+            <div>
+            <span className="font-bold">Client-side : </span>
+          <ul className="!list-disc ml-10">
+              <li>
+              Imports necessary dependencies including React, axios for making HTTP requests, Lottie for displaying a loading spinner animation, and react-hook-form for form handling.
+              </li>
+              <li>
+              Defines state variables like itemsPerPage, currentPage, count, and search to manage pagination and search functionality.
+              </li>
+              <li>
+              Uses useQuery hook from @tanstack/react-query for fetching data and managing it's state.
+              </li>
+              <li>
+              Defines functions like getJobsData to fetch job data based on pagination and search criteria, handleReset to reset search criteria, and handlePaginationBtn to handle pagination button clicks.
+              </li>
+              <li>
+              Utilizes useEffect hook to fetch job count data when the search criteria changes.
+              </li>
+              <li>
+              Renders a search form, job listing table, and pagination buttons.
+              </li>
+              <li>
+              Dynamically renders pagination buttons based on the total number of pages and current page state.
+              </li>
+              <li>
+              Utilizes conditional rendering to display a loading spinner while data is being fetched.
+              </li>
+            </ul>
+            </div>
+            </div>
         </div>
       </div>
     </section>

@@ -1,20 +1,30 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCard from "./JobCard";
 import axios from "axios";
-
+import { useQuery } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import spinner from '../assets/spinner.json'
 const Categories = () => {
-    const [jobs , setJobs] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
 
-  useEffect(()=>{
+  const {data:jobs = [] , isLoading} = useQuery({
+    queryFn: ()=> getJobsData(),
+    queryKey: ['jobs']
+  });
+
+  
     const getJobsData = async()=>{
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/jobs`);
-        setJobs(data);
+        return data;
+       
     };
-    getJobsData();
-  },[])
+    if(isLoading){
+      return <div className="grid place-content-center h-screen">
+      <Lottie className="h-40 w-40" animationData={spinner} loop={true} />
+    </div>
+    }
 
   return (
     <section>
@@ -38,14 +48,14 @@ const Categories = () => {
         </div>
 
         <TabPanel>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
             {jobs.map((job) => (
               <JobCard job={job} key={job?._id}></JobCard>
             ))}
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
             {jobs
               .filter((job) => job?.category === "On Site")
               .map((job) => (
@@ -54,7 +64,7 @@ const Categories = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
             {jobs
               .filter((job) => job?.category === "Remote")
               .map((job) => (
@@ -63,7 +73,7 @@ const Categories = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
             {jobs
               .filter((job) => job?.category === "Hybrid")
               .map((job) => (
@@ -72,7 +82,7 @@ const Categories = () => {
           </div>
         </TabPanel>
         <TabPanel>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
             {jobs
               .filter((job) => job?.category === "Part-Time")
               .map((job) => (

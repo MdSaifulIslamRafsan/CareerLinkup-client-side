@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useParams } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import Lottie from "lottie-react";
+import spinner from '../assets/spinner.json'
 const JobDetails = () => {
   const { user } = useAuth();
-const [job , setJob] = useState([]);
 const params = useParams();
+const queryClient = useQueryClient();
+  const {data:job = [] , isLoading} = useQuery({
+    queryFn: ()=> getJobData(),
+    queryKey: ['applicants-number']
+  });
 
-useEffect(() => {
-    getJobData();
-  }, [params]);
 
   const getJobData = async () => {
     const {data} = await axios(`${import.meta.env.VITE_API_URL}/job/${params?.id}`);
-    setJob(data);
+    return data
   };
   const {
     _id,
@@ -56,6 +60,7 @@ useEffect(() => {
       email,
       resume,
       jobOwnerEmail,
+      jobID: _id
     };
 
     try {
@@ -70,7 +75,8 @@ useEffect(() => {
         applyJobData?.data?.insertedId &&
         applicantsJobData?.data?.modifiedCount
       ) {
-        getJobData();
+        
+        queryClient.invalidateQueries({queryKey: ['applicants-number']});
         Swal.fire({
           title: "Good job!",
           text: "Application submitted successfully",
@@ -81,10 +87,17 @@ useEffect(() => {
       return Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: err.message,
+        text: err.response.data,
       });
     }
   };
+
+  if(isLoading){
+    return <div className="grid place-content-center h-screen">
+    <Lottie className="h-40 w-40" animationData={spinner} loop={true} />
+  </div>
+  }
+
   return (
     <div className="overflow-hidden p-4 rounded-lg shadow-md bg-base-200">
       <img
@@ -148,6 +161,7 @@ useEffect(() => {
                           name="name"
                           {...register("name")}
                           id="name"
+                          required
                           defaultValue={user?.displayName}
                           className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                         />
@@ -165,6 +179,7 @@ useEffect(() => {
                           {...register("email")}
                           id="email"
                           defaultValue={user?.email}
+                          required
                           className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                         />
                       </label>
@@ -178,6 +193,7 @@ useEffect(() => {
                         <input
                           type="resume"
                           name="resume"
+                          required
                           {...register("resume")}
                           id="resume"
                           placeholder="resume link"

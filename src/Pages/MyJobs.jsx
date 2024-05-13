@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react";
+
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../Hook/useAxiosSecure";
+import Lottie from "lottie-react";
+import spinner from '../assets/spinner.json'
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const MyJobs = () => {
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
   const { user } = useAuth();
-  const [myJobs, setMyJobs] = useState([]);
+  const {data:myJobs = [] , isLoading} = useQuery({
+    queryFn: ()=> getJobData(),
+    queryKey: ['myJobs' , user?.email]
+  });
 
-  useEffect(() => {
-    getJobData();
-  }, [user]);
+
 
   const getJobData = async () => {
-    const { data } = await axiosSecure.get(
+    const { data } = await axiosSecure(
       `/jobs/${user?.email}` ,
      
     );
-    setMyJobs(data);
+    return data;
   };
 
   const handleDelete = (id) => {
@@ -33,7 +38,7 @@ const MyJobs = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          const dalete = async () => {
+          const deleted = async () => {
             const { data } = await axiosSecure.delete(
               `/job/${id}`
             );
@@ -45,9 +50,9 @@ const MyJobs = () => {
               });
             }
 
-            getJobData();
+            queryClient.invalidateQueries({queryKey: ['myJobs']});
           };
-          dalete();
+          deleted();
         }
       });
     } catch (err) {
@@ -58,6 +63,11 @@ const MyJobs = () => {
       });
     }
   };
+  if(isLoading){
+    return <div className="grid place-content-center h-screen">
+    <Lottie className="h-40 w-40" animationData={spinner} loop={true} />
+  </div>
+  }
 
   return (
     <section className="container px-4 mx-auto pt-12">

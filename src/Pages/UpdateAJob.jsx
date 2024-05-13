@@ -20,9 +20,8 @@ const UpdateAJob = () => {
   const maxSalary = parseInt(salaryRange.split('-').slice(1,2).toString().split('$').slice(1,2).toString());
     const onSubmit = async(data) => {
       reset();
-      const { jobBanner, jobTitle, category, maxSalary, minSalary, description } =
+      const { jobBanner, jobTitle, category, maxSalary, minSalary, description , applicantsNumber } =
         data;
-  console.log(data);
       const updatedJob = {
         jobBanner,
         jobTitle,
@@ -33,7 +32,7 @@ const UpdateAJob = () => {
           name: user?.displayName,
           email: user?.email,
         },
-        applicantsNumber: 0,
+        applicantsNumber,
         postingDate: new Date().toLocaleDateString(),
         deadline:  new Date(startDate).toLocaleDateString()
       };
@@ -69,14 +68,14 @@ const UpdateAJob = () => {
             </h2>
   
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+              <div className="grid grid-cols-3 gap-6 mt-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <p>User Name</p>
                   <p>{user?.displayName}</p>
                 </div>
                 <div className="space-y-2">
                   <p>User Email</p>
-                  <p>{user?.email}</p>
+                  <p className="break-words">{user?.email}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
