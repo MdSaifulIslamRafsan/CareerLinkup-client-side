@@ -2,6 +2,7 @@ import {  onAuthStateChanged,  signInWithPopup, signOut , GoogleAuthProvider, cr
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -44,9 +45,17 @@ const AuthProvider = ({children}) => {
 
 
     useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
             setLoader(false);
+            if(currentUser){
+              const loggedEmail = {email : currentUser.email}
+              
+              axios.post(`http://localhost:5000/jwt`,loggedEmail , {withCredentials: true})
+              .then(res => {
+                // console.log(res.data);
+              })
+            }
           });
           return () => {
             unSubscribe();
@@ -56,6 +65,7 @@ const AuthProvider = ({children}) => {
     const handleLogout = () => {
         signOut(auth)
           .then(() => {
+            axios(`${import.meta.env.VITE_API_URL}/logout` , {withCredentials:true})
             Swal.fire({
               title: "Good job!",
               text: "You've been successfully logged out",

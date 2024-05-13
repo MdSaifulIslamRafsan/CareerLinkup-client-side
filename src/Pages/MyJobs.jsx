@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import useAuth from "../Hook/useAuth";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const MyJobs = () => {
+  const axiosSecure = useAxiosSecure()
   const { user } = useAuth();
   const [myJobs, setMyJobs] = useState([]);
 
@@ -14,8 +15,9 @@ const MyJobs = () => {
   }, [user]);
 
   const getJobData = async () => {
-    const { data } = await axios(
-      `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
+    const { data } = await axiosSecure.get(
+      `/jobs/${user?.email}` ,
+     
     );
     setMyJobs(data);
   };
@@ -24,7 +26,6 @@ const MyJobs = () => {
     try {
       Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -33,13 +34,13 @@ const MyJobs = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           const dalete = async () => {
-            const { data } = await axios.delete(
-              `${import.meta.env.VITE_API_URL}/job/${id}`
+            const { data } = await axiosSecure.delete(
+              `/job/${id}`
             );
             if (data?.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your file has been deleted.",
+                text: "Delete operation successful.",
                 icon: "success",
               });
             }

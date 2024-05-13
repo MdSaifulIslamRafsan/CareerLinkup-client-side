@@ -7,10 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateAJob = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     const [startDate, setStartDate] = useState(new Date());
     const { register, handleSubmit, reset } = useForm();
     const job = useLoaderData();
@@ -39,6 +40,8 @@ const UpdateAJob = () => {
       try{
           const newJobData = await axios.put(`${import.meta.env.VITE_API_URL}/job/${_id}`, updatedJob);
           if(newJobData?.data?.modifiedCount){
+            navigate("/my-jobs");
+
               Swal.fire({
                   title: "Good job!",
                   text: "Your job has been updated successfully!",
