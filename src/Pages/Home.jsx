@@ -3,6 +3,7 @@ import Carousel from "../Components/Banner/Carousel";
 import Categories from "../Components/Categories";
 import JobInfo from "../Components/JobInfo";
 import { motion } from "framer-motion";
+import ContactUs from "../Components/ContactUs";
 const Home = () => {
   return (
     <>
@@ -25,6 +26,14 @@ const Home = () => {
       >
         <JobInfo></JobInfo>
       </motion.div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+      <ContactUs></ContactUs>
+      </motion.div>
+      
     </>
   );
 };
