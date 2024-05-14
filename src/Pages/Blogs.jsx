@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet";
+
 const Blogs = () => {
   return (
     <section id="faq" className="relative mx-auto px-2">
+       <Helmet>
+        <title>CareerLinkup || Blog</title>
+    </Helmet>
       <h3 className="mb-14  text-center text-3xl font-semibold underline decoration-teal-200/80 lg:text-left xl:text-4xl">
         Blogs
       </h3>

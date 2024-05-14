@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion"
 import { BsBarChartLineFill } from "react-icons/bs";
 const JobCard = ({ job }) => {
   const { user } = useAuth();
@@ -24,7 +25,8 @@ const JobCard = ({ job }) => {
     applicantsNumber,
   } = job;
   return (
-    <div className="my-5 px-4 py-4  rounded-lg shadow-2xl">
+    <motion.div initial={{opacity: 0 , scale:0}} whileInView={{opacity: 1 , scale:1 }} transition={{duration: 0.5}}>
+          <div className="my-5 px-4 py-4  rounded-lg shadow-2xl">
       
       <p className="text-sm font-bold ">Job Posting Date :- {postingDate}</p>
       <p className="text-sm font-bold">Application Deadline :- {deadline}</p>
@@ -50,6 +52,8 @@ const JobCard = ({ job }) => {
         </div>
       </div>
     </div>
+    </motion.div>
+    
   );
 };
 

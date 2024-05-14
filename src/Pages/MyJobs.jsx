@@ -7,6 +7,7 @@ import useAxiosSecure from "../Hook/useAxiosSecure";
 import Lottie from "lottie-react";
 import spinner from '../assets/spinner.json'
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 
 const MyJobs = () => {
   const axiosSecure = useAxiosSecure();
@@ -71,6 +72,9 @@ const MyJobs = () => {
 
   return (
     <section className="container px-4 mx-auto pt-12">
+       <Helmet>
+        <title>CareerLinkup || My Jobs</title>
+    </Helmet>
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium ">My Posted Jobs</h2>
 

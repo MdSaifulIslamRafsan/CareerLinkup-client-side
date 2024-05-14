@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 const AddAJobs = () => {
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
@@ -52,6 +53,9 @@ const AddAJobs = () => {
   };
   return (
     <section className="grid lg:grid-cols-2 gap-5">
+       <Helmet>
+        <title>CareerLinkup || Add A Jobs</title>
+    </Helmet>
       <div>
         <Lottie animationData={AddJob} loop={true} />
       </div>
@@ -79,6 +83,7 @@ const AddAJobs = () => {
                 </label>
                 <input
                   id="jobTitle"
+                  required
                   {...register("jobTitle")}
                   name="jobTitle"
                   type="text"
@@ -91,6 +96,7 @@ const AddAJobs = () => {
                 </label>
                 <input
                   id="jobBanner"
+                  required
                   {...register("jobBanner")}
                   name="jobBanner"
                   type="text"
@@ -118,6 +124,7 @@ const AddAJobs = () => {
                   id="category"
                   className="border p-2 rounded-md"
                 >
+                  <option selected disabled value="">Category</option>
                   <option value="Remote">Remote</option>
                   <option value="On Site">On Site</option>
                   <option value="Hybrid">Hybrid</option>
@@ -131,6 +138,7 @@ const AddAJobs = () => {
                 </label>
                 <input
                   id="minSalary"
+                  required
                   {...register("minSalary")}
                   name="minSalary"
                   type="number"
@@ -143,6 +151,7 @@ const AddAJobs = () => {
                 </label>
                 <input
                   id="maxSalary"
+                  required
                   {...register("maxSalary")}
                   name="maxSalary"
                   type="number"
@@ -156,6 +165,7 @@ const AddAJobs = () => {
                 Description
               </label>
               <textarea
+               required
                 className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                 {...register("description")}
                 name="description"

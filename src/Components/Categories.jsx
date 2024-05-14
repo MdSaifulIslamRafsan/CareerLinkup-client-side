@@ -6,6 +6,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import spinner from '../assets/spinner.json'
+
 const Categories = () => {
   const [tabIndex, setTabIndex] = useState(0);
 

@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import spinner from '../assets/spinner.json'
+import { Helmet } from "react-helmet";
 const JobDetails = () => {
   const { user } = useAuth();
 const params = useParams();
@@ -30,6 +31,7 @@ const queryClient = useQueryClient();
     applicantsNumber,
     jobUser,
     deadline,
+    category
   } = job;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -60,7 +62,10 @@ const queryClient = useQueryClient();
       email,
       resume,
       jobOwnerEmail,
-      jobID: _id
+      jobTitle,
+      salaryRange,
+      jobID: _id,
+      category
     };
 
     try {
@@ -100,10 +105,13 @@ const queryClient = useQueryClient();
 
   return (
     <div className="overflow-hidden p-4 rounded-lg shadow-md bg-base-200">
+      <Helmet>
+        <title>CareerLinkup || Job Details</title>
+    </Helmet>
       <img
         className="object-cover rounded-lg w-full h-64"
         src={jobBanner}
-        alt="Article"
+        alt="Job Banner"
       />
       <div className="p-6">
         <div>
@@ -135,7 +143,6 @@ const queryClient = useQueryClient();
                     className="hidden sm:inline-block sm:h-screen sm:align-middle"
                     aria-hidden="true"
                   >
-                    ​
                   </span>
                   <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl dark:bg-gray-900 sm:my-8 sm:w-full sm:max-w-sm sm:p-6 sm:align-middle">
                     <h3

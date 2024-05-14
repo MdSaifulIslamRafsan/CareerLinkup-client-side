@@ -51,7 +51,7 @@ const AuthProvider = ({children}) => {
             if(currentUser){
               const loggedEmail = {email : currentUser.email}
               
-              axios.post(`http://localhost:5000/jwt`,loggedEmail , {withCredentials: true})
+              axios.post(`${import.meta.env.VITE_API_URL}/jwt`,loggedEmail , {withCredentials: true})
               .then(res => {
                 // console.log(res.data);
               })

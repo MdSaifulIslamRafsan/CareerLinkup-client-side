@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateAJob = () => {
     const { user } = useAuth();
@@ -58,6 +59,9 @@ const UpdateAJob = () => {
     };
     return (
       <section className="grid lg:grid-cols-2 gap-5">
+         <Helmet>
+        <title>CareerLinkup || Update A Jobs</title>
+    </Helmet>
         <div>
           <Lottie animationData={AddJob} loop={true} />
         </div>
@@ -127,6 +131,7 @@ const UpdateAJob = () => {
                     id="category"
                     className="border p-2 rounded-md"
                   >
+                    <option selected disabled value="">Category</option>
                     <option value="Remote">Remote</option>
                     <option value="On Site">On Site</option>
                     <option value="Hybrid">Hybrid</option>
