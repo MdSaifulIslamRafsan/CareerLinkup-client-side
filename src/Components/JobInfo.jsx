@@ -17,7 +17,7 @@ const JobInfo = () => {
   </div>
   
   <div className="relative w-full z-10 px-10 h-full text-center">
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-4 ">
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 ">
       <div className="flex items-center bg-white border rounded-sm overflow-hidden shadow">
         <div className="p-4 bg-blue-400">
         <MdOutlinePersonSearch className="w-12 h-12" />

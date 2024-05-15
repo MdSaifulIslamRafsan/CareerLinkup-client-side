@@ -4,7 +4,7 @@ import useAuth from "../Hook/useAuth";
 import Lottie from "lottie-react";
 import spinner from "../assets/spinner.json";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import PDF from "./PDF";
+import PDF from "../Components/PDF";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 

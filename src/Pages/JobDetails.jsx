@@ -35,6 +35,8 @@ const queryClient = useQueryClient();
   } = job;
   const [isOpen, setIsOpen] = useState(false);
 
+ 
+ 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     reset();
@@ -49,7 +51,7 @@ const queryClient = useQueryClient();
       });
     }
     if (
-      new Date().toLocaleDateString() > new Date(deadline).toLocaleDateString()
+      new Date().getTime() > new Date(deadline).getTime()
     ) {
       return Swal.fire({
         icon: "error",

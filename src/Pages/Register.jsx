@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import auth from "../Firebase/firebase.config";
+import { Helmet } from "react-helmet";
 const Register = () => {
   const [isPassword, setIsPassword] = useState(true);
 
@@ -81,6 +82,9 @@ const Register = () => {
 
   return (
     <div className="h-full">
+      <Helmet>
+        <title>CareerLinkup || Register</title>
+      </Helmet>
       {/* Container */}
       <div className="mx-auto">
         <div className="flex justify-center ">

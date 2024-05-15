@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      Open: '"Open Sans", sans-serif'
+    },
     extend: {
       keyframes: {
         animatedgradient: {
@@ -25,7 +28,7 @@ export default {
     require('daisyui'),
   ],
   daisyui: {
-    themes: ["light", "dracula"],
+    themes: ["corporate", "dracula"],
   },
 }
 

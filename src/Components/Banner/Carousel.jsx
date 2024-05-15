@@ -23,7 +23,7 @@ const Carousel = () => {
     };
     return (
       <>
-        <Swiper
+        <Swiper 
           loop={true}
           spaceBetween={30}
           centeredSlides={true}

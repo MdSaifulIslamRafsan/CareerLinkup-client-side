@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
 
-  const [isDark , setDark] = useState(localStorage.getItem('theme') || "light")
+  const [isDark , setDark] = useState(localStorage.getItem('theme') || "corporate")
 
 
     useEffect(()=>{
@@ -17,7 +17,7 @@ const Navbar = () => {
 
     },[isDark])
     const darkModeHandler = () => {
-      isDark === "light" ? setDark("dracula") : setDark("light");
+      isDark === "corporate" ? setDark("dracula") : setDark("corporate");
     }
   return (
     <div className="navbar max-w-[1440px] w-[95%] lg:w-11/12 mx-auto">

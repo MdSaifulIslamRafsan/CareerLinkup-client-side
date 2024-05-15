@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
+import { motion } from "framer-motion";
 const ContactUs = () => {
   const form = useRef();
   const sendEmail = (e) => {
@@ -33,32 +34,44 @@ const ContactUs = () => {
     <div className="mt-20 mx-auto px-2 md:px-4">
     <section className="">
         <div className="flex justify-center">
-            <div className="text-center md:max-w-xl lg:max-w-3xl">
+        <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+         <div className="text-center md:max-w-xl lg:max-w-3xl">
                 <h2 className="px-6 mb-5 text-4xl font-bold">
                     Contact us
                 </h2>
                 <p className="text-lg mb-12">This is a job-seeking website connecting talents with opportunities.</p>
             </div>
+      </motion.div>
+           
         </div>
-        <div className="flex flex-wrap">
+        <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+         <div className="flex flex-wrap">
             <form ref={form} onSubmit={sendEmail} className="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
                 <div className="mb-3 w-full">
                     <label className="block font-medium mb-[2px] text-teal-700" htmlFor="exampleInput90">
                         Name
                     </label>
-                    <input name='from_name' type="text" className="px-2 py-3 border w-full outline-none rounded-md" id="exampleInput90" placeholder="Name" />
+                    <input required name='from_name' type="text" className="px-2 py-3 border w-full outline-none rounded-md" id="exampleInput90" placeholder="Name" />
                 </div>
                 <div className="mb-3 w-full">
                     <label className="block font-medium mb-[2px] text-teal-700" htmlFor="exampleInput90">
                         Email
                     </label>
-                    <input name="from_email" type="email" className="px-3 py-2 border w-full outline-none rounded-md" id="exampleInput90" placeholder="Enter your email address" />
+                    <input required name="from_email" type="email" className="px-3 py-2 border w-full outline-none rounded-md" id="exampleInput90" placeholder="Enter your email address" />
                 </div>
                 <div className="mb-3 w-full">
                     <label className="block font-medium mb-[2px] text-teal-700" htmlFor="exampleInput90">
                         Message
                     </label>
-                    <textarea  className="px-2 py-5 border rounded-[5px] w-full outline-none" name="message" id=""></textarea>
+                    <textarea required className="px-2 py-5 border rounded-[5px] w-full outline-none" name="message" id=""></textarea>
                 </div>
                 <button type="submit" value="Send" className="mb-6 inline-block w-full rounded bg-teal-400 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-teal-500">
                     Send
@@ -156,6 +169,8 @@ const ContactUs = () => {
                 </div>
             </div>
         </div>
+      </motion.div>
+       
     </section>
 </div>
   );

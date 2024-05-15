@@ -3,9 +3,9 @@ import { Helmet } from "react-helmet";
 const Blogs = () => {
   return (
     <section id="faq" className="relative mx-auto px-2">
-       <Helmet>
+      <Helmet>
         <title>CareerLinkup || Blog</title>
-    </Helmet>
+      </Helmet>
       <h3 className="mb-14  text-center text-3xl font-semibold underline decoration-teal-200/80 lg:text-left xl:text-4xl">
         Blogs
       </h3>
@@ -89,33 +89,33 @@ const Blogs = () => {
         </div>
         <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
           <div>
-          <h5>
-          <span className="font-bold">Express Js: </span>
-            Express.js is a minimal and flexible Node.js web application
-            framework that provides a robust set of features for building web
-            and mobile applications. It is one of the most popular frameworks
-            for Node.js due to its simplicity, flexibility, and scalability.
-            Express.js provides a thin layer of fundamental web application
-            features, such as routing, middleware, and request/response
-            handling, allowing developers to build powerful and customizable web
-            servers and APIs quickly.
-          </h5>
-          <br />
-          <h5>
-          <span className="font-bold">Nest JS: </span>
-            NestJS is a progressive Node.js framework for building efficient,
-            reliable, and scalable server-side applications. It is built with
-            TypeScript and heavily inspired by Angular, which makes it ideal for
-            developers familiar with Angular concepts. NestJS leverages modern
-            JavaScript features and design patterns to provide a modular and
-            extensible architecture for building server-side applications. It
-            comes with built-in support for features such as dependency
-            injection, middleware, routing, and more, enabling developers to
-            create well-structured and maintainable codebases. Additionally,
-            NestJS provides out-of-the-box support for GraphQL, WebSockets,
-            microservices, and other advanced features, making it suitable for a
-            wide range of application types and use cases.
-          </h5>
+            <h5>
+              <span className="font-bold">Express Js: </span>
+              Express.js is a minimal and flexible Node.js web application
+              framework that provides a robust set of features for building web
+              and mobile applications. It is one of the most popular frameworks
+              for Node.js due to its simplicity, flexibility, and scalability.
+              Express.js provides a thin layer of fundamental web application
+              features, such as routing, middleware, and request/response
+              handling, allowing developers to build powerful and customizable
+              web servers and APIs quickly.
+            </h5>
+            <br />
+            <h5>
+              <span className="font-bold">Nest JS: </span>
+              NestJS is a progressive Node.js framework for building efficient,
+              reliable, and scalable server-side applications. It is built with
+              TypeScript and heavily inspired by Angular, which makes it ideal
+              for developers familiar with Angular concepts. NestJS leverages
+              modern JavaScript features and design patterns to provide a
+              modular and extensible architecture for building server-side
+              applications. It comes with built-in support for features such as
+              dependency injection, middleware, routing, and more, enabling
+              developers to create well-structured and maintainable codebases.
+              Additionally, NestJS provides out-of-the-box support for GraphQL,
+              WebSockets, microservices, and other advanced features, making it
+              suitable for a wide range of application types and use cases.
+            </h5>
           </div>
         </div>
       </div>
@@ -124,50 +124,62 @@ const Blogs = () => {
           <h4 className="text-lg font-medium">Explain all jobs page code.</h4>
         </div>
         <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
-            <div className="space-y-4">
+          <div className="space-y-4">
             <div>
-            <span className="font-bold">Server-side : </span>
-          <ul className="!list-disc ml-10">
-              <li>
-              <span className="font-bold">all-jobs : </span>
-              Retrieves paginated job data based on the provided query parameters such as page number, page size, and search keyword.
-              </li>
-              <li>
-              <span className="font-bold">jobs-count : </span>
-              Retrieves the total count of jobs based on the search keyword.
-              </li>
-            </ul>
+              <span className="font-bold">Server-side : </span>
+              <ul className="!list-disc ml-10">
+                <li>
+                  <span className="font-bold">all-jobs : </span>
+                  Retrieves paginated job data based on the provided query
+                  parameters such as page number, page size, and search keyword.
+                </li>
+                <li>
+                  <span className="font-bold">jobs-count : </span>
+                  Retrieves the total count of jobs based on the search keyword.
+                </li>
+              </ul>
             </div>
             <div>
-            <span className="font-bold">Client-side : </span>
-          <ul className="!list-disc ml-10">
-              <li>
-              Imports necessary dependencies including React, axios for making HTTP requests, Lottie for displaying a loading spinner animation, and react-hook-form for form handling.
-              </li>
-              <li>
-              Defines state variables like itemsPerPage, currentPage, count, and search to manage pagination and search functionality.
-              </li>
-              <li>
-              Uses useQuery hook from @tanstack/react-query for fetching data and managing it's state.
-              </li>
-              <li>
-              Defines functions like getJobsData to fetch job data based on pagination and search criteria, handleReset to reset search criteria, and handlePaginationBtn to handle pagination button clicks.
-              </li>
-              <li>
-              Utilizes useEffect hook to fetch job count data when the search criteria changes.
-              </li>
-              <li>
-              Renders a search form, job listing table, and pagination buttons.
-              </li>
-              <li>
-              Dynamically renders pagination buttons based on the total number of pages and current page state.
-              </li>
-              <li>
-              Utilizes conditional rendering to display a loading spinner while data is being fetched.
-              </li>
-            </ul>
+              <span className="font-bold">Client-side : </span>
+              <ul className="!list-disc ml-10">
+                <li>
+                  Imports necessary dependencies including React, axios for
+                  making HTTP requests, Lottie for displaying a loading spinner
+                  animation, and react-hook-form for form handling.
+                </li>
+                <li>
+                  Defines state variables like itemsPerPage, currentPage, count,
+                  and search to manage pagination and search functionality.
+                </li>
+                <li>
+                  Uses useQuery hook from @tanstack/react-query for fetching
+                  data and managing it's state.
+                </li>
+                <li>
+                  Defines functions like getJobsData to fetch job data based on
+                  pagination and search criteria, handleReset to reset search
+                  criteria, and handlePaginationBtn to handle pagination button
+                  clicks.
+                </li>
+                <li>
+                  Utilizes useEffect hook to fetch job count data when the
+                  search criteria changes.
+                </li>
+                <li>
+                  Renders a search form, job listing table, and pagination
+                  buttons.
+                </li>
+                <li>
+                  Dynamically renders pagination buttons based on the total
+                  number of pages and current page state.
+                </li>
+                <li>
+                  Utilizes conditional rendering to display a loading spinner
+                  while data is being fetched.
+                </li>
+              </ul>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     </section>

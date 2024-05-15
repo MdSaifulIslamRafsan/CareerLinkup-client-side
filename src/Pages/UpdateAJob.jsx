@@ -16,7 +16,7 @@ const UpdateAJob = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { register, handleSubmit, reset } = useForm();
     const job = useLoaderData();
-  const {_id, jobBanner, jobTitle, category, salaryRange  , description } = job;
+  const {_id, jobBanner, jobTitle, category, salaryRange  , description , deadline } = job;
   const minSalary = parseInt(salaryRange.split('-').slice(0,1).toString().split('$').slice(1,2).toString());
   const maxSalary = parseInt(salaryRange.split('-').slice(1,2).toString().split('$').slice(1,2).toString());
     const onSubmit = async(data) => {
@@ -116,6 +116,7 @@ const UpdateAJob = () => {
                   <DatePicker
                     className="border py-2 px-4 w-full"
                     selected={startDate}
+                    defaultValue={deadline}
                     onChange={(date) => setStartDate(date)}
                   />
                 </div>
@@ -182,7 +183,7 @@ const UpdateAJob = () => {
               </div>
               <div className="flex justify-center mt-6">
                 <button className="btn w-1/2 btn-outline btn-primary">
-                  Save
+                  Update
                 </button>
               </div>
             </form>

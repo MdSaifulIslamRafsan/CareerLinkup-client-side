@@ -7,6 +7,7 @@ import useAuth from "../Hook/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 const Login = () => {
     const {handleGoogleLogin , loginAccount} = useAuth();
     
@@ -64,6 +65,9 @@ const Login = () => {
   return (
     <>
       <div className=" lg:flex bg-base-200 rounded-lg shadow-lg overflow-hidden mx-auto">
+      <Helmet>
+        <title>CareerLinkup || Login</title>
+      </Helmet>
         <div className="lg:w-1/2 bg-cover">
           <Lottie animationData={login} loop={true} />
         </div>
