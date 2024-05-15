@@ -97,7 +97,7 @@ const AppliedJobs = () => {
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right "
                     >
-                      <span></span>
+                      <span> Action</span>
                     </th>
                     <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right "></th>
                   </tr>

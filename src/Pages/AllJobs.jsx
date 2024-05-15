@@ -141,7 +141,7 @@ if(isLoading){
                       <span>Salary Range</span>
                     </th>
                     <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right ">
-
+                      Action
                     </th>
                   </tr>
                 </thead>

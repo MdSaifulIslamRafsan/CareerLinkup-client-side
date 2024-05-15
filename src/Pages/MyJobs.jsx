@@ -121,7 +121,7 @@ const MyJobs = () => {
                     </th>
 
                     <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right ">
-                      Edit
+                    Action
                     </th>
                   </tr>
                 </thead>
