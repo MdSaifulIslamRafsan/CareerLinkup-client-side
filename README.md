@@ -17,9 +17,6 @@ my website  live link :- https://assignment-no-11-2de58.web.app/
 
 - Visually Appealing Design: Emphasizing color contrast, alignment, and spacing for a visually appealing design, making your browsing experience delightful.
 
-- Customized Components: Experience unique website elements tailored to enhance usability and engagement, setting CareerLinkup apart.
-
-- Inspired by Industry Leaders: Drawing inspiration from renowned platforms like ThemeForest, Dribble, and Google to deliver top-notch design and functionality.
 
 - Consistent Navbar and Footer: Enjoy a consistent browsing experience with a cohesive navbar and footer design across the website.
 
@@ -29,7 +26,6 @@ my website  live link :- https://assignment-no-11-2de58.web.app/
 
 - Dynamic Home Page: Discover trending job categories displayed in tabs on the Home page, with an option to explore all available opportunities.
 
-- Engaging Blogs Section: Delve into informative blogs covering topics such as access and refresh tokens, Express JS, and Nest JS, expanding your knowledge base.
 
 - Searchable Job Listings: Easily find relevant job listings with a comprehensive search system based on job titles, streamlining your job search process.
 

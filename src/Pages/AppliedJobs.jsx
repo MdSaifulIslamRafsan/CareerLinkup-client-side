@@ -10,18 +10,17 @@ import { Helmet } from "react-helmet";
 
 const AppliedJobs = () => {
   const axiosSecure = useAxiosSecure();
-  const [filter , SetFilter] = useState('');
+  const [filter, SetFilter] = useState("");
   const { user } = useAuth();
   const { data: appliedJobs = [], isLoading } = useQuery({
     queryFn: () => getJobData(),
-    queryKey: ["myJobs", user?.email , filter],
+    queryKey: ["myJobs", user?.email, filter],
   });
 
-
-
-
   const getJobData = async () => {
-    const { data } = await axiosSecure(`/appliedJobs/${user?.email}?filter=${filter}`);
+    const { data } = await axiosSecure(
+      `/appliedJobs/${user?.email}?filter=${filter}`
+    );
     return data;
   };
   if (isLoading) {
@@ -34,25 +33,25 @@ const AppliedJobs = () => {
 
   return (
     <div className="min-h-[calc(100vh-306px)]">
-       <Helmet>
+      <Helmet>
         <title>CareerLinkup || Applied Jobs</title>
-    </Helmet>
-      <div className="py-4 bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center gap-5 rounded-md">
+      </Helmet>
+      <div className="py-4 items-center  bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center gap-5 rounded-md">
         <h1 className="text-center text-white text-2xl">Applied Jobs</h1>
-        
-          <select
-            name="category"
-            onChange={(e)=> SetFilter(e.target.value)}
-            id="category"
-            value={filter}
-            className="border p-2 rounded-md"
-          >
-            <option value="">All Jobs</option>
-            <option value="Remote">Remote</option>
-            <option value="On Site">On Site</option>
-            <option value="Hybrid">Hybrid</option>
-            <option value="Part-Time">Part-Time</option>
-          </select>
+
+        <select
+          name="category"
+          onChange={(e) => SetFilter(e.target.value)}
+          id="category"
+          value={filter}
+          className="border p-2 rounded-md"
+        >
+          <option value="">All Jobs</option>
+          <option value="Remote">Remote</option>
+          <option value="On Site">On Site</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Part-Time">Part-Time</option>
+        </select>
       </div>
       <div className="flex flex-col mt-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

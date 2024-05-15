@@ -8,7 +8,7 @@ import Blogs from "../Pages/Blogs";
 import JobDetails from "../Pages/JobDetails";
 import PrivateRoute from "./PrivateRoute";
 import AllJobs from "../Pages/AllJobs";
-import AddAJobs from "../Pages/AddAJobs";
+import AddAJobs from "../Pages/AddAJob";
 import MyJobs from "../Pages/MyJobs";
 import UpdateAJob from "../Pages/UpdateAJob";
 import AppliedJobs from "../Pages/AppliedJobs";

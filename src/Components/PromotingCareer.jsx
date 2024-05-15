@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import './carreer.css';
 
 // import required modules
-import { EffectFlip, Pagination, Navigation , Autoplay } from 'swiper/modules';
+import { EffectFlip,  Navigation , Autoplay } from 'swiper/modules';
 import PromotingCareerCard from './PromotingCareerCard';
 
 
@@ -44,16 +44,13 @@ const PromotingCareer = () => {
         <Swiper
         effect={'flip'}
         grabCursor={true}
-        pagination={{
-            clickable: true,
-          }}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
           }}
         loop={true}
         navigation={true}
-        modules={[EffectFlip, Pagination, Navigation , Autoplay]}
+        modules={[EffectFlip,  Navigation , Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>

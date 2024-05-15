@@ -27,9 +27,9 @@ const Home = () => {
       >
         <JobInfo></JobInfo>
       </motion.div>
-
-      <PromotingCareer></PromotingCareer>
-
+      
+       <PromotingCareer></PromotingCareer>
+      
       <ContactUs></ContactUs>
     </>
   );

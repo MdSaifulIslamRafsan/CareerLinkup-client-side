@@ -7,54 +7,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useLoaderData, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
-const UpdateAJob = () => {
+const AddAJobs = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
+
   const { register, handleSubmit, reset } = useForm();
-  const job = useLoaderData();
-  const {
-    _id,
-    jobBanner,
-    jobTitle,
-    category,
-    salaryRange,
-    description,
-    deadline,
-  } = job;
-  const minSalary = parseInt(
-    salaryRange
-      .split("-")
-      .slice(0, 1)
-      .toString()
-      .split("$")
-      .slice(1, 2)
-      .toString()
-  );
-  const maxSalary = parseInt(
-    salaryRange
-      .split("-")
-      .slice(1, 2)
-      .toString()
-      .split("$")
-      .slice(1, 2)
-      .toString()
-  );
+
   const onSubmit = async (data) => {
     reset();
-    const {
-      jobBanner,
-      jobTitle,
-      category,
-      maxSalary,
-      minSalary,
-      description,
-      applicantsNumber,
-    } = data;
-    const updatedJob = {
+    const { jobBanner, jobTitle, category, maxSalary, minSalary, description } =
+      data;
+
+    const createNewJob = {
       jobBanner,
       jobTitle,
       category,
@@ -64,21 +29,19 @@ const UpdateAJob = () => {
         name: user?.displayName,
         email: user?.email,
       },
-      applicantsNumber,
+      applicantsNumber: 0,
       postingDate: new Date().toLocaleDateString(),
       deadline: new Date(startDate).toLocaleDateString(),
     };
     try {
-      const newJobData = await axios.put(
-        `${import.meta.env.VITE_API_URL}/job/${_id}`,
-        updatedJob
+      const newJobData = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jobs`,
+        createNewJob
       );
-      if (newJobData?.data?.modifiedCount) {
-        navigate("/my-jobs");
-
+      if (newJobData?.data?.insertedId) {
         Swal.fire({
           title: "Good job!",
-          text: "Your job has been updated successfully!",
+          text: "Your job has been added successfully!",
           icon: "success",
         });
       }
@@ -93,28 +56,28 @@ const UpdateAJob = () => {
   return (
     <section>
       <Helmet>
-        <title>CareerLinkup || Update A Job</title>
-      </Helmet>
-      <div className="py-4 bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center gap-5 rounded-md">
-        <h1 className="text-center text-white text-2xl"> Update A Job</h1>
-      </div>
+          <title>CareerLinkup || Add A Job</title>
+        </Helmet>
+        <div className="py-4 bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center gap-5 rounded-md">
+          <h1 className="text-center text-white text-2xl"> Add a Job</h1>
+        </div>
       <div className="grid lg:grid-cols-2 gap-5">
         <div>
           <Lottie animationData={AddJob} loop={true} />
         </div>
         <div className=" my-12">
           <section className=" p-2 md:p-6 mx-auto bg-base-200 rounded-md shadow-md ">
-            <h2 className="text-lg font-semibold capitalize ">Update a Job</h2>
+            <h2 className="text-lg font-semibold capitalize ">Add a Job</h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-3 gap-6 mt-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <p>User Name</p>
                   <p>{user?.displayName}</p>
                 </div>
                 <div className="space-y-2">
                   <p>User Email</p>
-                  <p className="break-words">{user?.email}</p>
+                  <p>{user?.email}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
@@ -122,9 +85,9 @@ const UpdateAJob = () => {
                   <label htmlFor="jobTitle">Job Title</label>
                   <input
                     id="jobTitle"
+                    required
                     {...register("jobTitle")}
                     name="jobTitle"
-                    defaultValue={jobTitle}
                     type="text"
                     className="block w-full px-4 py-2 mt-2 border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                   />
@@ -133,9 +96,9 @@ const UpdateAJob = () => {
                   <label htmlFor="jobBanner">Job Banner Url</label>
                   <input
                     id="jobBanner"
+                    required
                     {...register("jobBanner")}
                     name="jobBanner"
-                    defaultValue={jobBanner}
                     type="text"
                     className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                   />
@@ -147,7 +110,6 @@ const UpdateAJob = () => {
                   <DatePicker
                     className="border py-2 px-4 w-full"
                     selected={startDate}
-                    defaultValue={deadline}
                     onChange={(date) => setStartDate(date)}
                   />
                 </div>
@@ -157,7 +119,6 @@ const UpdateAJob = () => {
                   <select
                     {...register("category")}
                     name="category"
-                    defaultValue={category}
                     id="category"
                     className="border p-2 rounded-md"
                   >
@@ -170,11 +131,12 @@ const UpdateAJob = () => {
                     <option value="Part-Time">Part-Time</option>
                   </select>
                 </div>
+
                 <div>
                   <label htmlFor="minSalary">Min Salary</label>
                   <input
                     id="minSalary"
-                    defaultValue={minSalary}
+                    required
                     {...register("minSalary")}
                     name="minSalary"
                     type="number"
@@ -185,7 +147,7 @@ const UpdateAJob = () => {
                   <label htmlFor="maxSalary">Max salary</label>
                   <input
                     id="maxSalary"
-                    defaultValue={maxSalary}
+                    required
                     {...register("maxSalary")}
                     name="maxSalary"
                     type="number"
@@ -197,16 +159,16 @@ const UpdateAJob = () => {
               <div className="flex flex-col gap-2 mt-4">
                 <label htmlFor="description">Description</label>
                 <textarea
+                  required
                   className="block w-full px-4 py-2 mt-2 border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                   {...register("description")}
-                  defaultValue={description}
                   name="description"
                   id="description"
                 ></textarea>
               </div>
               <div className="flex justify-center mt-6">
                 <button className="btn w-1/2 btn-outline btn-primary">
-                  Update
+                  Save
                 </button>
               </div>
             </form>
@@ -217,4 +179,4 @@ const UpdateAJob = () => {
   );
 };
 
-export default UpdateAJob;
+export default AddAJobs;
