@@ -12,6 +12,8 @@ import AddAJobs from "../Pages/AddAJob";
 import MyJobs from "../Pages/MyJobs";
 import UpdateAJob from "../Pages/UpdateAJob";
 import AppliedJobs from "../Pages/AppliedJobs";
+import AddAResume from "../Pages/AddAResume";
+import Resume from "../Pages/Resume";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,16 @@ const router = createBrowserRouter([
         {
             path: '/applied-jobs',
             element: <PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
+            
+        },
+        {
+            path: '/add-a-resume',
+            element: <PrivateRoute><AddAResume></AddAResume></PrivateRoute>,
+            
+        },
+        {
+            path: '/resume',
+            element: <PrivateRoute><Resume></Resume></PrivateRoute>,
             
         },
     ]

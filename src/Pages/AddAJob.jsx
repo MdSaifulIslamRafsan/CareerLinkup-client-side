@@ -167,7 +167,7 @@ const AddAJobs = () => {
                 ></textarea>
               </div>
               <div className="flex justify-center mt-6">
-                <button className="btn w-1/2 btn-outline btn-primary">
+                <button className="btn w-1/2 btn-outline hover:bg-blue-500 hover:text-white">
                   Save
                 </button>
               </div>

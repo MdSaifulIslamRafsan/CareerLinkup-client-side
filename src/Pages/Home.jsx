@@ -11,13 +11,7 @@ const Home = () => {
       <Helmet>
         <title>CareerLinkup</title>
       </Helmet>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.7 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.2 }}
-      >
         <Carousel></Carousel>
-      </motion.div>
 
       <Categories></Categories>
       <motion.div

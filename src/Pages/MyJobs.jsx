@@ -78,7 +78,7 @@ const MyJobs = () => {
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium ">My Posted Jobs</h2>
 
-        <span className="px-6 py-1 bg-teal-900 text-white rounded-lg">
+        <span className="px-6 py-1 bg-blue-500 text-white rounded-lg">
           {myJobs.length}
         </span>
       </div>

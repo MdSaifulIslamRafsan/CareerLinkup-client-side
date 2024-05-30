@@ -3,6 +3,8 @@ import logo from "../../assets/logo.png";
 import useAuth from "../../Hook/useAuth";
 import { Tooltip } from "react-tooltip";
 import { useEffect, useState } from "react";
+import { AwesomeButton } from 'react-awesome-button';
+import 'react-awesome-button/dist/styles.css';
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
@@ -77,7 +79,7 @@ const Navbar = () => {
         <Link to="/" className="">
           <img className="mx-auto" src={logo} alt="" />
           <span className="text-base md:text-lg bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient bg-300% font-bold">
-            {" "}
+           
             CareerLinkup
           </span>
         </Link>
@@ -100,6 +102,9 @@ const Navbar = () => {
                       </li>
                       <li>
                         <NavLink to={"/my-jobs"}>My Jobs</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to={"/add-a-resume"}>Add A Resume</NavLink>
                       </li>
                     </>
                   )}
@@ -133,11 +138,15 @@ const Navbar = () => {
                 <p>{user?.email}</p>
                 <button
                   onClick={handleLogout}
-                  className="rounded mt-4 px-5 py-2 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300"
+                  className="rounded mt-4 px-5 py-2 overflow-hidden group bg-blue-500 relative hover:bg-gradient-to-r hover:from-blue-500 hover:to-blue-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-300"
                 >
                   <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                   <span className="relative">Logout</span>
                 </button>
+                <Link className="block my-3" to={'/resume'}>
+                <AwesomeButton type="primary">Resume</AwesomeButton>
+                </Link>
+               
               </Tooltip>
             </div>
           </div>
@@ -145,10 +154,10 @@ const Navbar = () => {
         {!user && (
           <Link
             to="/login"
-            className="text-xl w-24 h-10 flex justify-center items-center rounded-md bg-green-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
+            className="text-xl w-24 h-10 flex justify-center items-center rounded-md bg-blue-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
           >
-            <span className="absolute bg-green-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
-            <span className="absolute bg-green-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
+            <span className="absolute bg-blue-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
+            <span className="absolute bg-blue-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
             Login
           </Link>
         )}

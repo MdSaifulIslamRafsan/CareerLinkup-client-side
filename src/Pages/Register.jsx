@@ -26,7 +26,7 @@ const Register = () => {
             reset();
             const {name , photo , email , password} = data;
             
-            if (!/^[a-zA-Z\-\'\s]+$/.test(name)){
+            if (!/^[a-zA-Z\s\-']+$/.test(name)){
                 return Swal.fire({
                   icon: "error",
                   title: "Oops...",
@@ -97,14 +97,14 @@ const Register = () => {
             />
              <Lottie className="lg:w-1/2" animationData={registerImg} loop={true} />
             {/* Col */}
-            <div className="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg ">
-              <h3 className="py-4 text-2xl text-center text-gray-800 dark:text-white">
+            <div className="w-full lg:w-7/12 bg-base-300 p-5 rounded-lg ">
+              <h3 className="py-4 text-2xl text-center">
                 Create an Account!
               </h3>
-              <form  onSubmit={handleSubmit(onSubmit)} className="px-3 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded">
+              <form  onSubmit={handleSubmit(onSubmit)} className="px-3 pt-6 pb-8 mb-4 bg-base-200 rounded-xl">
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                    className="block mb-2 text-sm font-bold "
                     htmlFor="name"
                   >
                     Name
@@ -120,7 +120,7 @@ const Register = () => {
                 </div>
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                    className="block mb-2 text-sm font-bold "
                     htmlFor="photo"
                   >
                     Photo Url
@@ -136,7 +136,7 @@ const Register = () => {
                 </div>
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                    className="block mb-2 text-sm font-bold "
                     htmlFor="email"
                   >
                     Email
@@ -152,7 +152,7 @@ const Register = () => {
                 </div>
                 <div className="mb-4">
                   <label
-                    className="block mb-2 text-sm font-bold text-gray-700 dark:text-white"
+                    className="block mb-2 text-sm font-bold "
                     htmlFor="password"
                   >
                     Password
@@ -193,7 +193,7 @@ const Register = () => {
                   </a>
                 </div>
                 <div className="text-center">
-                  <p className="inline-block text-white text-sm align-baseline">
+                  <p className="inline-block text-sm align-baseline">
                     Already have an account? 
                      <Link
                       className=" text-blue-500 ml-3 hover:text-blue-800"

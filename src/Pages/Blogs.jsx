@@ -6,39 +6,39 @@ const Blogs = () => {
       <Helmet>
         <title>CareerLinkup || Blog</title>
       </Helmet>
-      <h3 className="mb-14  text-center text-3xl font-semibold underline decoration-teal-200/80 lg:text-left xl:text-4xl">
+      <h3 className="mb-14  text-center text-3xl font-semibold underline decoration-blue-200/80 lg:text-left xl:text-4xl">
         Blogs
       </h3>
       <div className="my-6">
-        <div className="rounded-t-2xl bg-teal-600/80  w-full cursor-pointer select-none border-2 border-teal-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-teal-600/80 hover:text-white">
+        <div className="rounded-t-2xl bg-gradient-to-r from-blue-500 to-blue-500  w-full cursor-pointer select-none border-2 border-blue-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-blue-600/80 hover:text-white">
           <h4 className="text-lg font-medium">
             What is an access token and refresh token? How do they work and
             where should we store them on the client side?
           </h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-blue-600/80  px-4 py-4">
           <div>
             <h5>
               <span className="font-bold">Access Token:</span> An access token
-              is a cryptographic string representing the authorization granted
+             {` is a cryptographic string representing the authorization granted
               to the client by the user. It is issued by the authentication
               server upon successful authentication and is used to access
               protected resources. Access tokens are time-bound and have limited
               permissions, usually specific to the scope of the user's
               authorization. They are sent with each request to the resource
-              server to prove the client's authorization to access the requested
+              server to prove the client's authorization to access the requested`}
               resource.
             </h5>
             <br />
             <h5>
-              <span className="font-bold">Refresh Token:</span> A refresh token
+              <span className="font-bold">Refresh Token:</span> {`A refresh token
               is a long-lived credential used to obtain a new access token when
               the current access token expires. Unlike access tokens, refresh
               tokens are not sent with each request to the resource server.
               Instead, they are securely stored by the client application and
               exchanged for a new access token when needed. Refresh tokens have
               a longer lifespan than access tokens and are used to maintain the
-              user's session without requiring frequent re-authentication.
+              user's session without requiring frequent re-authentication.`}
             </h5>
             <br />
             <h5>
@@ -67,9 +67,9 @@ const Blogs = () => {
                 access, as they can be used to obtain new access tokens.
               </li>
               <li>
-                It is recommended to store refresh tokens in a secure HTTP-only
+               {` It is recommended to store refresh tokens in a secure HTTP-only
                 cookie with the 'SameSite' attribute set to 'Lax' or 'Strict' to
-                mitigate cross-site request forgery (CSRF) attacks.
+                mitigate cross-site request forgery (CSRF) attacks.`}
               </li>
               <li>
                 Additionally, the client application should implement measures
@@ -82,12 +82,12 @@ const Blogs = () => {
         </div>
       </div>
       <div className="my-6">
-        <div className="rounded-t-2xl bg-teal-600/80 w-full cursor-pointer select-none border-2 border-teal-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-teal-600/80 hover:text-white">
+        <div className="rounded-t-2xl bg-gradient-to-r from-blue-500 to-blue-500 w-full cursor-pointer select-none border-2 border-blue-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-blue-600/80 hover:text-white">
           <h4 className="text-lg font-medium">
             What is express js? What is Nest JS?
           </h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-blue-600/80  px-4 py-4">
           <div>
             <h5>
               <span className="font-bold">Express Js: </span>
@@ -111,7 +111,7 @@ const Blogs = () => {
               modular and extensible architecture for building server-side
               applications. It comes with built-in support for features such as
               dependency injection, middleware, routing, and more, enabling
-              developers to create well-structured and maintainable codebases.
+              developers to create well-structured and maintainable code bases.
               Additionally, NestJS provides out-of-the-box support for GraphQL,
               WebSockets, microservices, and other advanced features, making it
               suitable for a wide range of application types and use cases.
@@ -120,10 +120,10 @@ const Blogs = () => {
         </div>
       </div>
       <div className="my-6">
-        <div className="rounded-t-2xl bg-teal-600/80 w-full cursor-pointer select-none border-2 border-teal-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-teal-600/80 hover:text-white">
+        <div className="rounded-t-2xl bg-gradient-to-r from-blue-500 to-blue-500 w-full cursor-pointer select-none border-2 border-blue-600/30 px-4 py-4 text-gray-100 transition duration-300 hover:border-blue-600/80 hover:text-white">
           <h4 className="text-lg font-medium">Explain all jobs page code.</h4>
         </div>
-        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-teal-600/80  px-4 py-4">
+        <div className="inline-flex w-full rounded-b-2xl border-x-2 border-b-2 border-dashed border-blue-600/80  px-4 py-4">
           <div className="space-y-4">
             <div>
               <span className="font-bold">Server-side : </span>
@@ -153,7 +153,7 @@ const Blogs = () => {
                 </li>
                 <li>
                   Uses useQuery hook from @tanstack/react-query for fetching
-                  data and managing it's state.
+                  data and managing{` it's`} state.
                 </li>
                 <li>
                   Defines functions like getJobsData to fetch job data based on

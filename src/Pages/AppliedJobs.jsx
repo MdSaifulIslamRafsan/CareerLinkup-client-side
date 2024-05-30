@@ -7,7 +7,8 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import PDF from "../Components/PDF";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 const AppliedJobs = () => {
   const axiosSecure = useAxiosSecure();
   const [filter, SetFilter] = useState("");
@@ -147,12 +148,7 @@ const AppliedJobs = () => {
                                 loading ? (
                                   "loading"
                                 ) : (
-                                  <button
-                                    className="relative inline-block rounded-lg 
-                           overflow-hidden border-sky-500 px-8 py-3 shadow-lg before:absolute before:inset-0 before:-z-10 before:block before:translate-x-[90%] before:rounded-s-full before:bg-sky-600 before:duration-200 after:absolute after:inset-0 after:-z-10 after:block after:-translate-x-[90%] after:rounded-e-full after:bg-sky-600 after:duration-500 hover:text-white before:hover:translate-x-0 after:hover:translate-x-0"
-                                  >
-                                    Download
-                                  </button>
+                                  <AwesomeButton type="primary">Download</AwesomeButton>
                                 )
                               }
                             </PDFDownloadLink>

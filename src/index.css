@@ -3,3 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.menu li > *:not(ul, .menu-title, details, .btn).active{
+    background: transparent;
+    color: #1E40AF;
+    border-bottom: 3px solid #1E40AF;
+}
+
+.menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)):hover{
+    background: none;
+}
+
+
+.menu :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)){
+    padding: 0.5rem 0 0.2rem;
+    margin: 0 0.8rem;
+    font-weight: bold;
+    border-radius: 0;
+}

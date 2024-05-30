@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import './carreer.css';
 
 // import required modules
-import { EffectFlip,  Navigation , Autoplay } from 'swiper/modules';
+import { EffectFlip,  Navigation} from 'swiper/modules';
 import PromotingCareerCard from './PromotingCareerCard';
 
 
@@ -29,12 +29,12 @@ const PromotingCareer = () => {
             Promoting Career
           </h1>
           <p className="mb-8 leading-relaxed">
-            Absolutely! Here's a description for the Promoting Career section
+           {` Absolutely! Here's a description for the Promoting Career section
             of your job-seeking website: Promoting Career: Elevate Your
             Professional Journey In the dynamic landscape of career advancement,
             standing out is paramount. Welcome to our Promoting Career
             section, your gateway to unlocking opportunities, honing skills, and
-            achieving professional excellence.
+            achieving professional excellence.`}
           </p>
          
         </div>
@@ -44,13 +44,9 @@ const PromotingCareer = () => {
         <Swiper
         effect={'flip'}
         grabCursor={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
         loop={true}
         navigation={true}
-        modules={[EffectFlip,  Navigation , Autoplay]}
+        modules={[EffectFlip,  Navigation]}
         className="mySwiper"
       >
         <SwiperSlide>
