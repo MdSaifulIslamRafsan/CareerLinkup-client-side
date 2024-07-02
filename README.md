@@ -7,7 +7,48 @@ servert-side :- https://github.com/MdSaifulIslamRafsan/CareerLinkup-server-side
 ## Overview
 CareerLinkup is a robust job-seeking platform designed to connect job seekers with opportunities across various sectors. With a focus on user experience and security, CareerLinkup offers a seamless interface for exploring job listings, managing applications, and empowering employers to efficiently manage recruitment processes.
 
+## Installation Steps:- 
 
+- Clone the Repository:
+
+```sh
+git clone https://github.com/MdSaifulIslamRafsan/CareerLinkup-client-side.git
+cd SOULMATE-client-side
+```
+
+- Install Dependencies:
+
+```sh
+npm install
+```
+
+- Set Up Environment Variables:
+Create a .env file in the root directory and add the following:
+
+```sh
+# Firebase Configuration
+VITE_APIKEY=your_firebase_api_key
+VITE_AUTHDOMAIN=your_firebase_auth_domain
+VITE_PROJECTID=your_firebase_project_id
+VITE_STORAGEBUCKET=your_firebase_storage_bucket
+VITE_MESSAGINGSENDERID=your_firebase_messaging_sender_id
+VITE_APPID=your_firebase_app_id
+
+# Image Hosting Service Configuration
+VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
+
+# Payment Gateway Configuration
+VITE_PAYMENT_GATEWAY=your_payment_gateway_key
+
+# Base URL of the Application
+VITE_BASEURL=your_base_url
+
+```
+- Run the Application:
+
+```sh
+npm run dev
+```
 
 # Features:-
 
