@@ -34,9 +34,6 @@ VITE_STORAGEBUCKET=your_firebase_storage_bucket
 VITE_MESSAGINGSENDERID=your_firebase_messaging_sender_id
 VITE_APPID=your_firebase_app_id
 
-# Image Hosting Service Configuration
-VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
-
 # Base URL of the Application
 VITE_BASEURL=your_base_url
 
