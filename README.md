@@ -13,7 +13,7 @@ CareerLinkup is a robust job-seeking platform designed to connect job seekers wi
 
 ```sh
 git clone https://github.com/MdSaifulIslamRafsan/CareerLinkup-client-side.git
-cd SOULMATE-client-side
+cd CareerLinkup-client-side
 ```
 
 - Install Dependencies:
