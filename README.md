@@ -37,9 +37,6 @@ VITE_APPID=your_firebase_app_id
 # Image Hosting Service Configuration
 VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
 
-# Payment Gateway Configuration
-VITE_PAYMENT_GATEWAY=your_payment_gateway_key
-
 # Base URL of the Application
 VITE_BASEURL=your_base_url
 
