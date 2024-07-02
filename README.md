@@ -55,8 +55,10 @@ npm run dev
 
 
 ## Technologies Used
-- Frontend: React
+- Frontend: React , tailwind
 - Backend: Express
 - Database: MongoDB
+- Payment Gateway: Stripe
 - Hosting & Authentication: Firebase
+- Image Hosting: imgBB
 - Token Management: JWT (JSON Web Tokens)
